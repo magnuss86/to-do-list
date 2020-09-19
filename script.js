@@ -16,8 +16,7 @@ var timeDiv = $("<div class='col-md-2 hour'>");
 var textArea = $("<textarea id = task class = 'col-md-8 task'>");
 var savBtn = $("<button data-id = saveT class = 'col-md-2 saveBtn'>")
 var myContainer = $(".container")
-// timeFix = i + 9
-// timeFix++
+
 
 // var savedText = JSON.parse(storage.getItem(hour)) || ''
 
@@ -29,8 +28,8 @@ $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 var currentTime = moment().format('H');
 
 // Adding elements to page
-savBtn.attr("data-saveT", i)
-textArea.attr("data-saveT", i)
+// savBtn.attr("data-saveT", i)
+textArea.attr("data-", i+9)
 timeDiv.text(times[i])
 savBtn.text("Save")
 myContainer.append(div);
@@ -67,6 +66,20 @@ var time = $(this).siblings(".hour").text()
 localStorage.setItem(time , value)
     console.log(value)
     console.log(time)
+
+
+// returning 
+var firstHour = localStorage.getItem("9")
+var firstHour = localStorage.getItem("10")
+var firstHour = localStorage.getItem("11")
+var firstHour = localStorage.getItem("12")
+var firstHour = localStorage.getItem("1")
+
+// console.log(firstHour);
+
+
+
+
 })
 
 

@@ -1,52 +1,14 @@
-# to-do-list
-
-console.log(moment().format());
-console.log(moment().format("h A"));
-
-// TODO: Create one row with time, text area, and button using JQ
-// Here's the layout of what we need to make using JQ
-{/* <div class="row  time-block">
-<div class="col-md-2 hour">
-  9 AM
-</div>
-<textarea class="col-md-8 past">
-  
-</textarea>
-<button class="col-md-2 saveBtn ">
-  Save
-</button>
-</div> */}
-
-// TODO: SHow the time on top of the calender, Using moment.js grab the time, and set the text of the P tag with the id of currentDay to be our time from moment.js
-
-// TODO:  Create an array to hold the hours that I need ["9 AM", "10 AM", "..." "12 PM" etc]
-
-// TODO:  using a for loop
 
 
-// TODO: loop over my array of hours and create a div for row, create div for hours, textarea, and a button\
 
-// TODO: give the elements some content 
+Hello!
 
-// TODO: How can I compare the hours of my rows, to the current time? (Use moment.js get the current time and compare to the time that is being assigned to the row)
+I have created a simple application that allows you to enter in text under a certain time-block and then save that text to localStorage in the broswer. Once an event is saved, it should be color coded in order to show past, present and future appointments with the respective colors of red, grey, and green.
 
-// TODO:  give the elements the classes that they need e.g using an if statment we can check using monet.js to see if the hour that we're looping ove is past the current hour if so give the text area the class of past
+To accomplish this, I started with declaring some global variables such at moment.js for current date and time.
 
-// TODO: Create click event listener for my buttons 
+Next I moved on to creating variables for the dyanmic elements I wanted to generate. Those are rows with 3 columns in each one. The columns are time, task/textarea/and button for saving.
 
-// TODO:  Grab the value of the text are and save it to a var (I nedd to be able to save the text from the text area that is in the same row as my button)
+To generate these dynamically I created an array of the times/hours I needed. Next I created a for loop which had an index of my time array to generate the format. Additionally in this loop i added conditionals to check against time to print the appropriate colors.
 
-// TODO: using localStorage.setItem save the text to local storage
-
-// TODO: retrieve the data from local storage using localStorage.getItem and show them back on the text area that they belong to (How can i know what text from local storage goes to what text area?)
-
-// localStorage.setItem("test", "My first note" )
-// localStorage.setItem("test1", "My second note" )
-
-
-// var text1FromLocalStorage= localStorage.getItem("test")
-// $(".first").text(text1FromLocalStorage)
-
-// var text2FromLocalStorage= localStorage.getItem("test1")
-
-// $(".second").text(text2FromLocalStorage)
+Finally I created an event.listener on the button class and becan to pull the text area data/value by using the sibling method because they button and textarea are on the same hierarchy under the parent row. i used their values to creat variables in order to create a key from the time block, and a value from the text are, which makes pushing these to the localStrorage easier.

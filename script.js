@@ -2,75 +2,72 @@
 
 // var for storage
 
-let storage = window.localStorage
-
-let saveText = []
-
+var storage = window.localStorage
+var saveText = []
 var times = [
-    "10", "11", "12", "1", "2", "3", "4", "5", "6", 
-]
+    "9", "11", "12", "1", "2", "3", "4", "5",]
 
+// for loop that will generate my rows and columns dynamically and create the conditions for the calendar blocks to change color
+
+for (let i = 0; i < times.length; i++) {
+var currentDay = $("#currentDay")     
+var div = $("<div class='row time-block'>");
+var timeDiv = $("<div class='col-md-2 hour'>");
+var textArea = $("<textarea class = 'col-md-8'>");
+var savBtn = $("<button class = 'col-md-2 saveBtn'>")
+var myContainer = $(".container")
+// timeFix = i + 9
+// timeFix++
+
+// var savedText = JSON.parse(storage.getItem(hour)) || ''
 
   // get times from moment
 
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
+//Current time
+var currentTime = moment().format('H');
 
-// hour var
-var hour = moment().hours();
+// Adding elements to page
+timeDiv.text(times[i])
+savBtn.text("Save")
+myContainer.append(div);
+div.append(timeDiv);
+div.append(textArea);
+div.append(savBtn);
 
-var currentTime = 14
-
-
-// var t = 9; // uniqie id tag corresponded to the single time block div
-for (let i = 10; i <= 18; i++) {
-    var hour = `hour-${i}`
-    var savedText = JSON.parse(storage.getItem(hour)) || ''
-    var myContainer = $(".container")
-    var div = $("<div class='row time-block'>"); // single time slot div
-    div.attr("id", `hour-${i}`); // <div id = 'hour-10'class='row time-block'>
-
-    var singleTime = $("<div class='col-md-1 hour'>").text(times[i-10]);
-    // we are still missing textarea and button, we just need to create and append to the div
-     svar textAreaEl = $("<textarea class = 'col-md-8'>");
-    // textAreaEl.attr("class", "textarea");
-    // textAreaEl.attr("class", "col-md-8");
-    textAreaEl.text(savedText)
-    //textAreaEl.text('TEXT TEST--> ' + times[i-10]);
-    var savBtn = $("<button class = 'col-md-2 saveBtn'>")
-    // savBtn.attr("class", "saveBtn")
-    // savBtn.attr("class", "col-md-2 saveBtn")
-    savBtn.attr('id', i)
-    savBtn.text("Save")
-
-    // textAreaEl.append
-    div.append(singleTime); 
-
-    // append it to container
-    div.append(textAreaEl, savBtn)
-    myContainer.append(div);
-
-    
-
-   
+//changing colors
+if (times[i] < currentTime) {
+    textArea.attr("class", "col-md-8 past")    
 }
+else if (times[i] > currentTime) {
+    textArea.attr("class", "col-md-8 future")
+}
+else if (times[i] === currentTime) {
+    textArea.attr("class", "col-md-8 present")
+}
+   
+
+}   
+    
+    
 
 
     
-$(".saveBtn").on('click', function(event){
-//   $("textarea").siblings(value)
-    event.preventDefault()  
-  var savePush = $(this).siblings(".textarea").val
-//   if ($(this)) {
-//       localStorage.setItem("saveText", savePush)
-//   }
-//  //get the id off of this 
+// $(".saveBtn").on('click', function(event){
+// //   $("textarea").siblings(value)
+//     event.preventDefault()  
+//   var savePush = $(this).siblings(".textarea").val
+// //   if ($(this)) {
+// //       localStorage.setItem("saveText", savePush)
+// //   }
+// //  //get the id off of this 
 
-//  //use id to get .val of input area
-//  //then save that value to localstorage, and then update the text
+// //  //use id to get .val of input area
+// //  //then save that value to localstorage, and then update the text
 
-console.log($(this));
+// console.log($(this));
    
-})
+// })
 
 

@@ -4,6 +4,7 @@
 
 let storage = window.localStorage
 
+let saveText = []
 
 var times = [
     "10", "11", "12", "1", "2", "3", "4", "5", "6", 
@@ -31,7 +32,7 @@ for (let i = 10; i <= 18; i++) {
 
     var singleTime = $("<div class='col-md-1 hour'>").text(times[i-10]);
     // we are still missing textarea and button, we just need to create and append to the div
-   var textAreaEl = $("<textarea class = 'col-md-8'>");
+     svar textAreaEl = $("<textarea class = 'col-md-8'>");
     // textAreaEl.attr("class", "textarea");
     // textAreaEl.attr("class", "col-md-8");
     textAreaEl.text(savedText)
@@ -58,13 +59,17 @@ for (let i = 10; i <= 18; i++) {
     
 $(".saveBtn").on('click', function(event){
 //   $("textarea").siblings(value)
-  console.log("test")
- //get the id off of this 
+    event.preventDefault()  
+  var savePush = $(this).siblings(".textarea").val
+//   if ($(this)) {
+//       localStorage.setItem("saveText", savePush)
+//   }
+//  //get the id off of this 
 
- //use id to get .val of input area
- //then save that value to localstorage, and then update the text
+//  //use id to get .val of input area
+//  //then save that value to localstorage, and then update the text
 
-
+console.log($(this));
    
 })
 

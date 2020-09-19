@@ -13,7 +13,7 @@ for (let i = 0; i < times.length; i++) {
 var currentDay = $("#currentDay")     
 var div = $("<div class='row time-block'>");
 var timeDiv = $("<div class='col-md-2 hour'>");
-var textArea = $("<textarea data-id = saveT class = 'col-md-8'>");
+var textArea = $("<textarea id = task class = 'col-md-8 task'>");
 var savBtn = $("<button data-id = saveT class = 'col-md-2 saveBtn'>")
 var myContainer = $(".container")
 // timeFix = i + 9
@@ -51,18 +51,22 @@ else if (times[i] > currentTime) {
 else if (times[i] === currentTime) {
     textArea.attr("class", "col-md-8 present")
 }
-   
-
 }   
-    
- 
-
+     
 // Click listener and push value to local storage
+
+//clear storage test
+
+// localStorage.clear();
     
 $(".saveBtn").on('click', function(event){
 // console.log(event);
 event.preventDefault()
-   
+var value = $(this).siblings("#task").val()
+var time = $(this).siblings(".hour").text()
+localStorage.setItem(time , value)
+    console.log(value)
+    console.log(time)
 })
 
 
